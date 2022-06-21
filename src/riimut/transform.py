@@ -1,7 +1,7 @@
 def transform(content: str, mapping: "dict[str, str]") -> str:
-    result = ""
-
-    for letter in content:
-        result += mapping.get(letter.lower(), letter)
-
-    return result
+    return "".join(
+        [
+            mapping.get(letter.lower(), letter)
+            for letter in content
+        ]
+    )
