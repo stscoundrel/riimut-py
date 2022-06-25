@@ -21,7 +21,6 @@ MAPPING: Final = {
     "ᛚ": "l",
     "ᛦ": "y",
     ":": " ",
-
     # Sting diacritic secondary sounds.
     "ᚯ": "ø",
     "ᛅ": "æ",
@@ -30,6 +29,7 @@ MAPPING: Final = {
     "ᚽ": "e",
     "ᚵ": "g",
 }
+
 
 def get_rune_mapping() -> dict[str, str]:
     return MAPPING
