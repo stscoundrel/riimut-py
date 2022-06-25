@@ -60,6 +60,27 @@ print(latin) # "auk tani karþi kristna"
 ```
 
 
+Younger Futhark comes with long branch (Danish) and short twig (Norwegian & Swedish) variants.
+
+```python
+from riimut import younger_futhark
+
+letters = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæöøǫþ"
+
+# Comes with named functions per style.
+long_branch = younger_futhark.letters_to_long_branch_runes(letters)
+short_twig = younger_futhark.letters_to_short_twig_runes(letters)
+
+print(long_branch) # ᛅᛅᛒᛋᛏᚦᛁᛁᚠᚴᚼᛁᛁᛁᚴᛚᛘᚾᚢᚢᛒᚴᚱᛋᛏᚦᚢᚢᚢᚢᛋᚢᚢᛋᚢᛅᛅᚢᚢᚢᚦ
+print(short_twig)  # ᛆᛆᛒᛌᛐᚦᛁᛁᚠᚴᚽᛁᛁᛁᚴᛚᛘᚿᚢᚢᛒᚴᚱᛌᛐᚦᚢᚢᚢᚢᛌᚢᚢᛌᚢᛆᛆᚢᚢᚢᚦ
+
+# Default function can also be called with variant enum to define the runeset.
+long_branch_result = younger_futhark.letters_to_runes(letters, younger_futhark.Variant.LONG_BRANCH)
+short_twig_result = younger_futhark.letters_to_runes(letters, younger_futhark.Variant.SHORT_TWIG)
+
+```
+
+
 #### What's in the name?
 
 "Riimut" is the Finnish word for "runes".
