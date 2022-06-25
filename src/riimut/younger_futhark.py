@@ -1,7 +1,6 @@
 from enum import Enum
 from .transform import _transform
 from .dialects.younger_futhark.letters import (
-    get_letter_mapping,
     get_letters_to_long_branch_mapping,
     get_letters_to_short_twig_mapping,
 )

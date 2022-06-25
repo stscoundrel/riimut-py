@@ -23,4 +23,4 @@ jobs:
         pipenv install --deploy --dev
     - name: Test with Python ${{ matrix.python-version }}
       run: |
-        pipenv run pytest -v
+        pipenv run unit-test

@@ -23,4 +23,4 @@ jobs:
         pipenv install --deploy --dev
     - name: Check type hints with ${{ matrix.python-version }}
       run: |
-        pipenv run mypy src
+        pipenv run type-hints
