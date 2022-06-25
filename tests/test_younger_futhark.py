@@ -1,7 +1,7 @@
 from src.riimut import younger_futhark
 
 
-def test_transforms_letters_to_runes():
+def test_default_transforms_letters_to_runes():
     content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæöøǫþ"
     expected = "ᛅᛅᛒᛋᛏᚦᛁᛁᚠᚴᚼᛁᛁᛁᚴᛚᛘᚾᚢᚢᛒᚴᚱᛋᛏᚦᚢᚢᚢᚢᛋᚢᚢᛋᚢᛅᛅᚢᚢᚢᚦ"
     result = younger_futhark.letters_to_runes(content)
@@ -9,12 +9,49 @@ def test_transforms_letters_to_runes():
     assert result == expected
 
 
-def test_transforms_runes_to_letters():
-    content = "ᚠᚢᚦᚬᚱᚴᚼᚽᚾᚿᛁᛅᛆᛋᛌᛏᛐᛒᛘᛚᛦ:"
-    expected = "fuþorkhhnniaassttbmlR "
-    result = younger_futhark.runes_to_letters(content)
+def test_transforms_letters_to_long_branch_runes():
+    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæöøǫþ"
+    expected = "ᛅᛅᛒᛋᛏᚦᛁᛁᚠᚴᚼᛁᛁᛁᚴᛚᛘᚾᚢᚢᛒᚴᚱᛋᛏᚦᚢᚢᚢᚢᛋᚢᚢᛋᚢᛅᛅᚢᚢᚢᚦ"
+    result = younger_futhark.letters_to_long_branch_runes(content)
 
     assert result == expected
+
+
+def test_transforms_letters_to_short_twig_runes():
+    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæöøǫþ"
+    expected = "ᛆᛆᛒᛌᛐᚦᛁᛁᚠᚴᚽᛁᛁᛁᚴᛚᛘᚿᚢᚢᛒᚴᚱᛌᛐᚦᚢᚢᚢᚢᛌᚢᚢᛌᚢᛆᛆᚢᚢᚢᚦ"
+    result = younger_futhark.letters_to_short_twig_runes(content)
+
+    assert result == expected
+
+
+def test_transforms_letters_to_runes_with_given_variant():
+    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæöøǫþ"
+    expected_long_branch = "ᛅᛅᛒᛋᛏᚦᛁᛁᚠᚴᚼᛁᛁᛁᚴᛚᛘᚾᚢᚢᛒᚴᚱᛋᛏᚦᚢᚢᚢᚢᛋᚢᚢᛋᚢᛅᛅᚢᚢᚢᚦ"
+    expected_short_twig = "ᛆᛆᛒᛌᛐᚦᛁᛁᚠᚴᚽᛁᛁᛁᚴᛚᛘᚿᚢᚢᛒᚴᚱᛌᛐᚦᚢᚢᚢᚢᛌᚢᚢᛌᚢᛆᛆᚢᚢᚢᚦ"
+
+    long_branch_result = younger_futhark.letters_to_runes(
+        content, younger_futhark.Variant.LONG_BRANCH
+    )
+    short_twig_result = younger_futhark.letters_to_runes(
+        content, younger_futhark.Variant.SHORT_TWIG
+    )
+
+    assert long_branch_result == expected_long_branch
+    assert short_twig_result == expected_short_twig
+
+
+def test_transforms_runes_to_letters():
+    long_branch = "ᚠᚢᚦᚬᚱᚴᚼᚽᚾᚿᛁᛅᛆᛋᛌᛏᛐᛒᛘᛚᛦ:"
+    short_twig = "ᚠᚢᚦᚬᚱᚴᚽᚽᚿᚿᛁᛆᛆᛌᛌᛐᛐᛒᛘᛚᛦ:"
+    expected = "fuþorkhhnniaassttbmlR "
+
+    # Both runesets should produce same letters.
+    long_branch_result = younger_futhark.runes_to_letters(long_branch)
+    short_twig_result = younger_futhark.runes_to_letters(short_twig)
+
+    assert long_branch_result == expected
+    assert short_twig_result == expected
 
 
 def test_transforms_old_norse_to_runes():
