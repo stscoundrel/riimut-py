@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="riimut",
-    version="1.1.1",
+    version="1.2.0",
     author="stscoundrel",
     description="Transform latin letters to runes and vice versa",
     long_description=long_description,
