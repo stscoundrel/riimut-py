@@ -2,12 +2,13 @@
 
 Transform latin letters to runes &amp; vice versa. Python version.
 
-Includes transformers for four main runic alphabets:
+Includes transformers for main runic alphabets and common variants:
 
 - Elder Futhark
 - Younger Futhark
 - Medieval Futhork
 - Futhorc (Anglo-Frisian runes)
+- Staveless Futhark
 
 ### Install
 
@@ -21,7 +22,7 @@ Riimut ships four runic dialect modules. Each contains methods for transforming 
 
 Text to runes:
 ```python
-from riimut import younger_futhark, elder_futhark, medieval_futhork, futhorc
+from riimut import younger_futhark, elder_futhark, medieval_futhork, futhorc, staveless_futhark
 
 # From Old Groms runestone.
 content1 = "auk tani karþi kristna"
@@ -43,6 +44,10 @@ content4 = "fisc.flodu.ahofonferg | enberig |"
 result4 = futhorc.letters_to_runes(content4)
 print(result4) # ᚠᛁᛋᚳ.ᚠᛚᚩᛞᚢ.ᚪᚻᚩᚠᚩᚾᚠᛖᚱᚷ:|:ᛖᚾᛒᛖᚱᛁᚷ:|
 
+# From Old Norse text in Hög runestone.
+content5 = "kuþniutr þru sun lit rita stin þina ak bru kirþi aftiʀ bruþr sina asbiurn ak at kuþlaf"
+result5 = staveless_futhark.letters_to_runes(content)
+print(result5) # ᛍ╮ו⸜ᛁ╮⸍◟:ו◟╮:╵╮⸜:⸌ᛁ⸍:◟ᛁ⸍⸝:╵⸍ᛁ⸜:וᛁ⸜⸝:⸝ᛍ:ˏ◟╮:ᛍᛁ◟וᛁ:⸝ᛙ⸍ᛁʀ:ˏ◟╮ו◟:╵ᛁ⸜⸝:⸝╵ˏᛁ╮◟⸜:⸝ᛍ:⸝⸍:ᛍ╮ו⸌⸝ᛙ
 
 ```
 
