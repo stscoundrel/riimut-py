@@ -2,33 +2,33 @@ from src.riimut import younger_futhark
 
 
 def test_default_transforms_letters_to_runes():
-    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæöøǫþ"
-    expected = "ᛅᛅᛒᛋᛏᚦᛁᛁᚠᚴᚼᛁᛁᛁᚴᛚᛘᚾᚢᚢᛒᚴᚱᛋᛏᚦᚢᚢᚢᚢᛋᚢᚢᛋᚢᛅᛅᚢᚢᚢᚦ"
+    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæœöøǫþ"
+    expected = "ᛅᛅᛒᛋᛏᚦᛁᛁᚠᚴᚼᛁᛁᛁᚴᛚᛘᚾᚢᚢᛒᚴᚱᛋᛏᚦᚢᚢᚢᚢᛋᚢᚢᛋᚢᛅᛅᚢᚢᚢᚢᚦ"
     result = younger_futhark.letters_to_runes(content)
 
     assert result == expected
 
 
 def test_transforms_letters_to_long_branch_runes():
-    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæöøǫþ"
-    expected = "ᛅᛅᛒᛋᛏᚦᛁᛁᚠᚴᚼᛁᛁᛁᚴᛚᛘᚾᚢᚢᛒᚴᚱᛋᛏᚦᚢᚢᚢᚢᛋᚢᚢᛋᚢᛅᛅᚢᚢᚢᚦ"
+    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæœöøǫþ"
+    expected = "ᛅᛅᛒᛋᛏᚦᛁᛁᚠᚴᚼᛁᛁᛁᚴᛚᛘᚾᚢᚢᛒᚴᚱᛋᛏᚦᚢᚢᚢᚢᛋᚢᚢᛋᚢᛅᛅᚢᚢᚢᚢᚦ"
     result = younger_futhark.letters_to_long_branch_runes(content)
 
     assert result == expected
 
 
 def test_transforms_letters_to_short_twig_runes():
-    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæöøǫþ"
-    expected = "ᛆᛆᛒᛌᛐᚦᛁᛁᚠᚴᚽᛁᛁᛁᚴᛚᛘᚿᚢᚢᛒᚴᚱᛌᛐᚦᚢᚢᚢᚢᛌᚢᚢᛌᚢᛆᛆᚢᚢᚢᚦ"
+    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæœöøǫþ"
+    expected = "ᛆᛆᛒᛌᛐᚦᛁᛁᚠᚴᚽᛁᛁᛁᚴᛚᛘᚿᚢᚢᛒᚴᚱᛌᛐᚦᚢᚢᚢᚢᛌᚢᚢᛌᚢᛆᛆᚢᚢᚢᚢᚦ"
     result = younger_futhark.letters_to_short_twig_runes(content)
 
     assert result == expected
 
 
 def test_transforms_letters_to_runes_with_given_variant():
-    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæöøǫþ"
-    expected_long_branch = "ᛅᛅᛒᛋᛏᚦᛁᛁᚠᚴᚼᛁᛁᛁᚴᛚᛘᚾᚢᚢᛒᚴᚱᛋᛏᚦᚢᚢᚢᚢᛋᚢᚢᛋᚢᛅᛅᚢᚢᚢᚦ"
-    expected_short_twig = "ᛆᛆᛒᛌᛐᚦᛁᛁᚠᚴᚽᛁᛁᛁᚴᛚᛘᚿᚢᚢᛒᚴᚱᛌᛐᚦᚢᚢᚢᚢᛌᚢᚢᛌᚢᛆᛆᚢᚢᚢᚦ"
+    content = "aábcdðeéfghiíjklmnoópqrstþuúvwxyýzåäæœöøǫþ"
+    expected_long_branch = "ᛅᛅᛒᛋᛏᚦᛁᛁᚠᚴᚼᛁᛁᛁᚴᛚᛘᚾᚢᚢᛒᚴᚱᛋᛏᚦᚢᚢᚢᚢᛋᚢᚢᛋᚢᛅᛅᚢᚢᚢᚢᚦ"
+    expected_short_twig = "ᛆᛆᛒᛌᛐᚦᛁᛁᚠᚴᚽᛁᛁᛁᚴᛚᛘᚿᚢᚢᛒᚴᚱᛌᛐᚦᚢᚢᚢᚢᛌᚢᚢᛌᚢᛆᛆᚢᚢᚢᚢᚦ"
 
     long_branch_result = younger_futhark.letters_to_runes(
         content, younger_futhark.Variant.LONG_BRANCH
