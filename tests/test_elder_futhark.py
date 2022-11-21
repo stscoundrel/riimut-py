@@ -2,8 +2,8 @@ from src.riimut import elder_futhark
 
 
 def test_transforms_letters_to_runes():
-    content = "aábcdðeéfghiíjklmnŋoópqrstþuúvwxyýzåäæöøǫþ"
-    expected = "ᚨᚨᛒᚲᛞᚦᛖᛖᚠᚷᚻᛁᛁᛃᚲᛚᛗᚾᛜᛟᛟᛈᚲᚱᛋᛏᚦᚢᚢᚹᚹᛋᛁᛁᛉᛟᛇᛇᚢᚢᛟᚦ"
+    content = "aábcdðeéfghiíjklmnŋoópqrstþuúvwxyýzåäæœöøǫþ"
+    expected = "ᚨᚨᛒᚲᛞᚦᛖᛖᚠᚷᚻᛁᛁᛃᚲᛚᛗᚾᛜᛟᛟᛈᚲᚱᛋᛏᚦᚢᚢᚹᚹᛋᛁᛁᛉᛟᛇᛇᛟᚢᚢᛟᚦ"
     result = elder_futhark.letters_to_runes(content)
 
     assert result == expected
