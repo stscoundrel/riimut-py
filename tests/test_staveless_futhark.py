@@ -2,8 +2,8 @@ from src.riimut import staveless_futhark
 
 
 def test_transforms_letters_to_runes():
-    content = "aábcdðeéfghiíjklmnoópqrRstþuúvwxyýzåäæöøǫþ "
-    expected = "⸝⸝ˏ╵⸍וᛁᛁᛙᛍᚽᛁᛁᛁᛍ⸌⠃⸜ˎˎˏᛍ◟◟╵⸍ו╮╮╮╮╵╮╮╵ˎ⸝⸝ˎˎˎו:"
+    content = "aábcdðeéfghiíjklmnoópqrRstþuúvwxyýzåäæœöøǫþ "
+    expected = "⸝⸝ˏ╵⸍וᛁᛁᛙᛍᚽᛁᛁᛁᛍ⸌⠃⸜ˎˎˏᛍ◟◟╵⸍ו╮╮╮╮╵╮╮╵ˎ⸝⸝ˎˎˎˎו:"
     result = staveless_futhark.letters_to_runes(content)
 
     assert result == expected
