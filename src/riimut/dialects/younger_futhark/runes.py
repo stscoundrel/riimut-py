@@ -27,5 +27,4 @@ MAPPING: Final = {
 
 
 def get_rune_mapping() -> dict[str, str]:
-
     return MAPPING
